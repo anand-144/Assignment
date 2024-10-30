@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Change to your required Node version
+
+      - name: Install Dependencies
+        run: npm install  # Use the package manager relevant to your project
+
+      - name: Build
+        run: npm run build  # Adjust this command to your build process
+
+      - name: Deploy
+        run: |
+          echo "Deploying application..."
+          # Add deployment commands here (e.g., uploading files to a server)
